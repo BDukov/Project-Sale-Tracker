@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(10px, 1fr));
+        background-color: #fff;
+        color: #444;
+        max-width: 800px;
+      }
+      
+      .row {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(10px, 1fr));
+      }
+      
+      div:nth-child(4) { grid-row-start: 2; }
+      div:nth-child(5) { grid-row-start: 3; }
+      
+      .box {
+        background-color: #fff;
+        color: black;
+        border: 1px solid #CCC;
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 150%;
+      }</style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box a">col 1</div>
+        <div class="box b">col 2</div>
+        <div class="box c">col 3</div>
+      
+        <!-- Table Row -->
+        <div class="row">
+          <div class="box d">short data</div>
+          <div class="box e">a really long piece of data</div>
+          <div class="box f">short data</div>
+        </div>
+      
+        <!-- Table Row -->
+        <div class="row">
+          <div class="box d">short data</div>
+          <div class="box e">a really long piece of data</div>
+          <div class="box f">short data</div>
+        </div>
+    </div>
+</body>
+</html>

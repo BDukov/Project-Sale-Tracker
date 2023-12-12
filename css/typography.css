@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Serif);
+@import url(https://fonts.googleapis.com/css?family=PT+Serif);
+
+html {
+    font: 18px/1.5 'PT Serif', serif;
+}
+
+p {
+    font: 18px/1.5 'PT Sans' sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+body {
+    background: #f2f2f2;
+}

@@ -1,0 +1,24 @@
+.site-header-title {
+    font-size: 2em;
+    font-weight: 800;
+    text-align: center;
+    margin: 1em;
+}
+
+.site-header-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-header-button {
+    background: #04AA6D;
+    color: white;
+    border-radius: 0.3em;
+    padding: 10px;
+    margin: 10px;
+    font-weight: 800;
+    text-decoration: none;
+    width: 20em;
+    height: 5em;
+}
