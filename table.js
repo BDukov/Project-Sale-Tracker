@@ -357,9 +357,9 @@ const  data = [
         let dealer = rowData.dealer;
         let date = rowData.date;
         
-        const modal = document.createElement('div');
-        modal.classList.add('edit-modal');
-        modal.style.display = 'flex';
+        const editModal = document.createElement('div');
+        editModal.classList.add('edit-modal');
+        editModal.style.display = 'flex';
     
         const modalContent = document.createElement('div');
         modalContent.classList.add('modal-content');
@@ -419,7 +419,7 @@ const  data = [
       
             clearTable();
             createData(data);
-            modal.style.display = 'none';
+            editModal.style.display = 'none';
           } else {
             alert('Please fill all fields');
           }
@@ -427,7 +427,7 @@ const  data = [
     
           button2.addEventListener('click', function(e) {
           e.preventDefault();
-          modal.style.display = 'none';
+          editModal.style.display = 'none';
           });
     
         form.appendChild(label);
@@ -446,8 +446,8 @@ const  data = [
         form.appendChild(button2);
         modalContent.appendChild(h2);
         modalContent.appendChild(form);
-        modal.appendChild(modalContent);
-        container.appendChild(modal);
+        editModal.appendChild(modalContent);
+        container.appendChild(editModal);
         
       }
       );
@@ -533,18 +533,27 @@ const  data = [
     button.addEventListener('click', function(e) {
       e.preventDefault();
       if (input.value !== '' && input2.value !== '' && input3.value !== '' && input4.value !== '' && input5.value !== '' && input6.value !== '') {
-        const product = input.value;
-        const price = input2.value;
-        const count = input3.value;
-        const amount = input4.value;
-        const dealer = input5.value;
-        const date = input6.value;
+        let product = input.value;
+        let price = input2.value;
+        let count = input3.value;
+        let amount = input4.value;
+        let dealer = input5.value;
+        let date = input6.value;
   
         data.unshift({product, price, count, amount, dealer, date});
   
         clearTable();
         createData(data);
         modal.style.display = 'none';
+
+        input.value = '';
+        input2.value = '';
+        input3.value = '';
+        input4.value = '';
+        input5.value = '';
+        input6.value = '';
+        
+        
       } else {
         alert('Please fill all fields');
       }
