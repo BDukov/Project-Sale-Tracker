@@ -169,3 +169,38 @@ tr:nth-child(even) {
     justify-content: center;
     align-items: center;
 }
+
+.pagination-buttons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    margin: 0 2em 1em 0;
+    /* background: red;; */
+
+}
+
+
+
+.pagination-btn:hover {
+    background: #fff;
+    color: #04AA6D;
+    cursor: pointer;
+}
+
+
+.pagination-buttons-container button {
+    border: 2px solid #04AA6D;
+    padding: 0.5em 1em;
+    margin: 0.5em 0 0.5em 1em;
+    border-radius: 0.3em;
+    color: #fff;
+    background: #04AA6D;
+    max-width: 5em;
+}
+
+.pagination-buttons-container button.clicked {
+    background: #fff;
+    color: #04AA6D;
+    cursor: pointer;
+}

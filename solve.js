@@ -307,12 +307,16 @@
 // console.log(result);
 
 
-function isAnagram(str1, str2) {
-    const str1Arr = str1.split('').sort().join('');
-    const str2Arr = str2.split('').sort().join('');
-    return 
-    str1Arr === str2Arr
-}
+// function isAnagram(str1, str2) {
+//     const str1Arr = str1.split('').sort().join('');
+//     const str2Arr = str2.split('').sort().join('');
+//     return 
+//     str1Arr === str2Arr
+// }
 
-console.log(isAnagram("listen", "silent"));
-console.log(isAnagram('hello', 'world'));
+// console.log(isAnagram("listen", "silent"));
+// console.log(isAnagram('hello', 'world'));
+
+// let x;
+// x = +"5" + 5;
+// console.log(x);

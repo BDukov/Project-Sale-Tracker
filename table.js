@@ -2,6 +2,12 @@ const  data = [
   { orderId: 1231, product: "Bolt", price: 24, count: 1, amount: 10, date:'10-12-2023', dealer:'John' },
   { orderId: 2231, product: "Hinge", price: 33, count: 3, amount: 5, date:'9-11-2023', dealer:'Peter' },
   { orderId: 3231, product: "Suspension", price: 48, count: 2, amount: 5, date:'15-12-2023', dealer:'Susan' },
+  { orderId: 1231, product: "Bolt", price: 24, count: 1, amount: 10, date:'10-12-2023', dealer:'John' },
+  { orderId: 2231, product: "Hinge", price: 33, count: 3, amount: 5, date:'9-11-2023', dealer:'Peter' },
+  { orderId: 3231, product: "Suspension", price: 48, count: 2, amount: 5, date:'15-12-2023', dealer:'Susan' },
+  { orderId: 1231, product: "Bolt", price: 24, count: 1, amount: 10, date:'10-12-2023', dealer:'John' },
+  { orderId: 2231, product: "Hinge", price: 33, count: 3, amount: 5, date:'9-11-2023', dealer:'Peter' },
+  { orderId: 3231, product: "Suspension", price: 48, count: 2, amount: 5, date:'15-12-2023', dealer:'Susan' },
 ];
 
   export function createTable(){
@@ -294,12 +300,22 @@ const  data = [
   const tableBody = document.createElement("tbody");
   table.appendChild(tableBody);
 
+  //PAGINATION
+
+  const itemsPerPage = 5;
+  let currentPage = 1;
+
   createData(data);
   //Създавам редове и популирам данните
   function createData(data){
 
-    data.forEach((item) => {
-      let row = document.createElement("tr");
+//Pagination logic
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentPageData = data.slice(startIndex, endIndex);
+
+currentPageData.forEach((item) => {
+  let row = document.createElement("tr");
       row.classList.add("custom-table-row");
       
       const cell0 = document.createElement("td");
@@ -414,6 +430,8 @@ const  data = [
             const amount = input4.value;
             const dealer = input5.value;
             const date = input6.value;
+
+            console.log(index);
       
             data.splice(index, 1 , {orderId, product, price, count, amount, dealer, date});
       
@@ -481,7 +499,46 @@ const  data = [
       
       tableBody.appendChild(row);
     });
+  // DATA CREATION END 
   }
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  const pageButtonsContainer = document.createElement('div');
+  pageButtonsContainer.classList.add('pagination-buttons-container');
+
+  for (let i = 1; i <= totalPages; i++) {
+      const pageBtn = document.createElement('button');
+      pageBtn.textContent = i;
+      pageBtn.classList.add('pagination-btn');
+
+      if (i === 1) {
+        pageBtn.classList.add('clicked');
+    }
+
+      pageBtn.addEventListener('click', () => {
+          currentPage = i;
+          clearTable();
+          createData(data);
+          updateActivePageButton();
+      });
+      pageButtonsContainer.appendChild(pageBtn);
+  }
+
+  container.appendChild(pageButtonsContainer);
+
+  function updateActivePageButton() {
+    const pageButtons = document.querySelectorAll('.pagination-btn');
+    pageButtons.forEach((button, index) => {
+        if (index + 1 === currentPage) {
+            button.classList.add('clicked');
+        } else {
+            button.classList.remove('clicked');
+        }
+    });
+}
+
+  // createData(data);
 
   //Създавам модално прозорче за добавяне на нова продажба
     createModal();
