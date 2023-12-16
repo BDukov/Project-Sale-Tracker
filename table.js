@@ -354,6 +354,7 @@ const  data = [
     updateActivePageButton();
   });
 
+
   container.appendChild(resultsPerPageSelect);
 
 
@@ -737,6 +738,11 @@ currentPageData.forEach((item) => {
     container.appendChild(modal);
   }
 
+  const topComands = document.createElement('div');
+  topComands.classList.add('top-comands');
+  topComands.appendChild(resultsPerPageSelect);
+  topComands.appendChild(searchInput);
+  container.appendChild(topComands);
   
 
 };
