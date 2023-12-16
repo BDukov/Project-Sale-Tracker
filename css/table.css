@@ -19,6 +19,7 @@
     /* width:60em; */
     border: 2px solid black;
     border-collapse: collapse;
+    order: 2
 }
 
 
@@ -43,9 +44,6 @@ tr:nth-child(even) {
     background-color: #eee;
 }
 
-.action-btns-row{ 
-    background: blue;
-}
 
 .action-btns {
     margin:0 auto;
@@ -80,6 +78,7 @@ tr:nth-child(even) {
         border-radius: 0.3em;
         color: #fff;
         background: #04AA6D;
+        order:0
 }
 
 .add-new-btn:hover, .edit-btn:hover {
@@ -177,7 +176,7 @@ tr:nth-child(even) {
     align-items: center;
     margin: 0 2em 1em 0;
     /* background: red;; */
-
+    order:3
 }
 
 
@@ -203,4 +202,16 @@ tr:nth-child(even) {
     background: #fff;
     color: #04AA6D;
     cursor: pointer;
+}
+
+.search-input {
+    border: 2px solid #04AA6D;
+    padding: 0.5em 1em;
+    margin: 0.5em 3em 0.5em 1em;
+    border-radius: 0.3em;
+    color: black;
+    background: white;
+    max-width: 10em;
+    order: 1;
+    align-self: flex-end;
 }

@@ -8,9 +8,20 @@ const  data = [
   { orderId: 1231, product: "Bolt", price: 24, count: 1, amount: 10, date:'10-12-2023', dealer:'John' },
   { orderId: 2231, product: "Hinge", price: 33, count: 3, amount: 5, date:'9-11-2023', dealer:'Peter' },
   { orderId: 3231, product: "Suspension", price: 48, count: 2, amount: 5, date:'15-12-2023', dealer:'Susan' },
+  { orderId: 1231, product: "Bolt", price: 24, count: 1, amount: 10, date:'10-12-2023', dealer:'John' },
+  { orderId: 2231, product: "Hinge", price: 33, count: 3, amount: 5, date:'9-11-2023', dealer:'Peter' },
+  { orderId: 3231, product: "Suspension", price: 48, count: 2, amount: 5, date:'15-12-2023', dealer:'Susan' },
+  { orderId: 1231, product: "Bolt", price: 24, count: 1, amount: 10, date:'10-12-2023', dealer:'John' },
+  { orderId: 2231, product: "Hinge", price: 33, count: 3, amount: 5, date:'9-11-2023', dealer:'Peter' },
+  { orderId: 3231, product: "Suspension", price: 48, count: 2, amount: 5, date:'15-12-2023', dealer:'Susan' },
+  { orderId: 1231, product: "Bolt", price: 24, count: 1, amount: 10, date:'10-12-2023', dealer:'John' },
+  { orderId: 2231, product: "Hinge", price: 33, count: 3, amount: 5, date:'9-11-2023', dealer:'Peter' },
+  { orderId: 3231, product: "Suspension", price: 48, count: 2, amount: 5, date:'15-12-2023', dealer:'Susan' },
 ];
 
   export function createTable(){
+
+    
   
   //Създавам контейнер за таблицата
   let container = document.getElementById("table-container");
@@ -62,6 +73,8 @@ const  data = [
   headerCell5.textContent = "Dealer";
   headerCell6.textContent = "Date";
   headerCell7.textContent = "Actions";
+
+  
   
     //FILtER 
 
@@ -299,10 +312,52 @@ const  data = [
   
   const tableBody = document.createElement("tbody");
   table.appendChild(tableBody);
+  
+
+    // Add SEARCH input field
+    const searchInput = document.createElement('input');
+    searchInput.setAttribute('type', 'text');
+    searchInput.setAttribute('placeholder', 'Search...');
+    searchInput.classList.add('search-input');
+    // container.appendChild(searchInput);
+
+    searchInput.addEventListener('input', function () {
+      const searchTerm = searchInput.value.toLowerCase();
+      const filteredData = data.filter(item =>
+        Object.values(item).some(value => {
+          const resultSearchTerm = value.toString().toLowerCase().includes(searchTerm);
+          return resultSearchTerm;
+        })
+      );
+      clearTable();
+      createData(filteredData);
+    });
+   
+  
 
   //PAGINATION
 
-  const itemsPerPage = 5;
+  const resultsPerPageSelect = document.createElement('select');
+  resultsPerPageSelect.classList.add('results-per-page-select'); 
+
+  const resultsPerPageOptions = [5, 10, 20];
+  resultsPerPageSelect.innerHTML = resultsPerPageOptions.map(option =>
+    `<option value="${option}">${option} per page</option>`
+  ).join('');
+
+
+  resultsPerPageSelect.addEventListener('change', function () {
+    itemsPerPage = parseInt(resultsPerPageSelect.value, 10);
+    currentPage = 1; // Reset current page when changing the number of results per page
+    clearTable();
+    createData(data);
+    updateActivePageButton();
+  });
+
+  container.appendChild(resultsPerPageSelect);
+
+
+  let itemsPerPage = 5;
   let currentPage = 1;
 
   createData(data);
@@ -502,10 +557,44 @@ currentPageData.forEach((item) => {
   // DATA CREATION END 
   }
 
+  //PAGINATION BUTTONS
+
+  //previous button
+  const previousBtn = document.createElement('button');
+  previousBtn.textContent = 'Prev';
+  previousBtn.classList.add('pagination-btn');
+
+  previousBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      clearTable();
+      createData(data);
+      updateActivePageButton();
+    }
+  });
+
+  //next button
+
+  const nextBtn = document.createElement('button');
+  nextBtn.textContent = 'Next';
+  nextBtn.classList.add('pagination-btn');
+
+  nextBtn.addEventListener('click', () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      clearTable();
+      createData(data);
+      updateActivePageButton();
+    }
+  });
+
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const pageButtonsContainer = document.createElement('div');
   pageButtonsContainer.classList.add('pagination-buttons-container');
+
+  pageButtonsContainer.appendChild(previousBtn);
+
 
   for (let i = 1; i <= totalPages; i++) {
       const pageBtn = document.createElement('button');
@@ -525,18 +614,25 @@ currentPageData.forEach((item) => {
       pageButtonsContainer.appendChild(pageBtn);
   }
 
+  pageButtonsContainer.appendChild(nextBtn);
+
   container.appendChild(pageButtonsContainer);
+
+  const tableContainer = document.getElementById("table-container");
+
+  tableContainer.appendChild(searchInput);
 
   function updateActivePageButton() {
     const pageButtons = document.querySelectorAll('.pagination-btn');
     pageButtons.forEach((button, index) => {
-        if (index + 1 === currentPage) {
-            button.classList.add('clicked');
-        } else {
-            button.classList.remove('clicked');
-        }
+      button.classList.remove('clicked');
     });
-}
+  
+    const currentPageButton = document.querySelector(`.pagination-btn:nth-child(${currentPage + 1})`);
+    if (currentPageButton) {
+      currentPageButton.classList.add('clicked');
+    }
+  }
 
   // createData(data);
 
