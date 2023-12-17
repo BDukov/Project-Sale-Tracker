@@ -94,16 +94,18 @@ const  data = [
         
         filterSelect.addEventListener('change', () => {
           const selectedFilter = filterSelect.value;
-
+        
           let sorted = [...data];
 
           switch (selectedFilter) {
             case '':
+              //I reload the page to reset the table
+              location.reload();
               clearTable();
               createData(data);
+              break;
             case '0-9':
             sorted = data.sort((a,b) => a.price - b.price);
-            console.log(sorted);
             clearTable();
             createData(sorted);
               break;
@@ -132,11 +134,12 @@ const  data = [
 
         switch (selectedFilter) {
           case '':
+            location.reload();
             clearTable();
             createData(data);
+            break;
           case '0-9':
           sorted = data.sort((a,b) => a.count - b.count);
-          console.log(sorted);
           clearTable();
           createData(sorted);
             break;
@@ -165,11 +168,12 @@ const  data = [
 
         switch (selectedFilter) {
           case '':
+            location.reload();
             clearTable();
             createData(data);
+            break;
           case '0-9':
           sorted = data.sort((a,b) => a.amount - b.amount);
-          console.log(sorted);
           clearTable();
           createData(sorted);
             break;
@@ -196,11 +200,12 @@ const  data = [
         let sorted = [...data];
         switch (selectedFilter) {
           case '':
+            location.reload();
             clearTable();
             createData(data);
+            break;
           case '0-9':
         sorted = data.sort((a,b) => a.date - b.date); //TO FIX THIS SORTING BY DATE
-          console.log(sorted);
           clearTable();
           createData(sorted);
             break;
@@ -229,11 +234,12 @@ const  data = [
 
         switch (selectedFilter) {
           case '':
+            location.reload();
             clearTable();
             createData(data);
+            break;
           case 'A-Z':
           sorted = data.sort((a, b) => a.dealer.localeCompare(b.dealer));
-          console.log(sorted);
           clearTable();
           createData(sorted);
             break;
@@ -262,11 +268,12 @@ const  data = [
 
         switch (selectedFilter) {
           case '':
+            location.reload();
             clearTable();
             createData(data);
+            break;
           case 'A-Z':
           sorted = data.sort((a, b) => a.product.localeCompare(b.product));
-          console.log(sorted);
           clearTable();
           createData(sorted);
             break;
@@ -365,12 +372,12 @@ const  data = [
 
   createData(data);
   //Създавам редове и популирам данните
-  function createData(data){
+  function createData(param){
 
 //Pagination logic
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const currentPageData = data.slice(startIndex, endIndex);
+    const currentPageData = param.slice(startIndex, endIndex);
 
 currentPageData.forEach((item) => {
   let row = document.createElement("tr");
@@ -407,7 +414,6 @@ currentPageData.forEach((item) => {
         const row = parentElement.parentElement;
 
         const index = data.findIndex((item) => String(item.orderId) === row.children[0].textContent);
-        console.log(index);
 
 
 
@@ -421,7 +427,6 @@ currentPageData.forEach((item) => {
           date: row.children[6].textContent,
         }
 
-        console.log(rowData);
 
         let orderId = rowData.orderId;
         let product = rowData.product;
@@ -489,7 +494,6 @@ currentPageData.forEach((item) => {
             const dealer = input5.value;
             const date = input6.value;
 
-            console.log(index);
       
             data.splice(index, 1 , {orderId, product, price, count, amount, dealer, date});
       
