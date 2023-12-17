@@ -336,6 +336,9 @@ const  data = [
   
 
   //PAGINATION
+  
+    let itemsPerPage = 5;
+    let currentPage = 1;
 
   const resultsPerPageSelect = document.createElement('select');
   resultsPerPageSelect.classList.add('results-per-page-select'); 
@@ -344,6 +347,7 @@ const  data = [
   resultsPerPageSelect.innerHTML = resultsPerPageOptions.map(option =>
     `<option value="${option}">${option} per page</option>`
   ).join('');
+  
 
 
   resultsPerPageSelect.addEventListener('change', function () {
@@ -352,14 +356,12 @@ const  data = [
     clearTable();
     createData(data);
     updateActivePageButton();
+    paginationButtons();
   });
 
 
   container.appendChild(resultsPerPageSelect);
 
-
-  let itemsPerPage = 5;
-  let currentPage = 1;
 
   createData(data);
   //Създавам редове и популирам данните
@@ -590,38 +592,73 @@ currentPageData.forEach((item) => {
   });
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
-
   const pageButtonsContainer = document.createElement('div');
   pageButtonsContainer.classList.add('pagination-buttons-container');
 
-  pageButtonsContainer.appendChild(previousBtn);
+  
+  
+  
+  paginationButtons();
+  function paginationButtons() {
+    
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+    pageButtonsContainer.innerHTML = '';
+
+    if(data.length > itemsPerPage) {
+    pageButtonsContainer.appendChild(previousBtn);
+    }
+
+    //When Load table for the first time, hide previous button
+    if (currentPage = 1) {
+      previousBtn.style.display = 'none';
+    } else {
+      previousBtn.style.display = 'block';
+    }
 
 
-  for (let i = 1; i <= totalPages; i++) {
+    for (let i = 1; i <= totalPages; i++) {
       const pageBtn = document.createElement('button');
       pageBtn.textContent = i;
       pageBtn.classList.add('pagination-btn');
-
+      
       if (i === 1) {
         pageBtn.classList.add('clicked');
-    }
-
-      pageBtn.addEventListener('click', () => {
+    } 
+    
+    pageBtn.addEventListener('click', () => {
           currentPage = i;
           clearTable();
           createData(data);
           updateActivePageButton();
-      });
-      pageButtonsContainer.appendChild(pageBtn);
-  }
 
-  pageButtonsContainer.appendChild(nextBtn);
+          //When click on page button, hide previous button if current page is 1
+          if (currentPage == 1) {
+            previousBtn.style.display = 'none';
+          } else {
+            previousBtn.style.display = 'block';
+          }
 
+          //When click on page button, hide next button if current page is last
+          if (currentPage == totalPages) {
+            nextBtn.style.display = 'none';
+          } else {
+            nextBtn.style.display = 'block';
+          }
+
+        });
+        pageButtonsContainer.appendChild(pageBtn);
+      }
+      
+      if(data.length > itemsPerPage) {
+        pageButtonsContainer.appendChild(nextBtn);
+      }
+      
   container.appendChild(pageButtonsContainer);
 
   const tableContainer = document.getElementById("table-container");
 
   tableContainer.appendChild(searchInput);
+}
 
   function updateActivePageButton() {
     const pageButtons = document.querySelectorAll('.pagination-btn');
