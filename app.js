@@ -1,4 +1,4 @@
-import { createTable, toggleTable } from './table.js';
+import { createTable, toggleTable } from './src/table/table.js';
 
 document.addEventListener("DOMContentLoaded", function () {
 
