@@ -120,6 +120,19 @@ export function createTable() {
   createData(data, currentPage, itemsPerPage, tableBody);
 
   //PAGINATION BUTTONS
+  function hideButtons() {
+    if (currentPage == 1) {
+      previousBtn.style.display = "none";
+    } else {
+      previousBtn.style.display = "block";
+    }
+
+    if (currentPage == totalPages) {
+      nextBtn.style.display = "none";
+    } else {
+      nextBtn.style.display = "block";
+    }
+  }
 
   //previous button
   const previousBtn = document.createElement("button");
@@ -130,8 +143,9 @@ export function createTable() {
     if (currentPage > 1) {
       currentPage--;
       clearTable();
-      createData(data);
+      createData(data, currentPage, itemsPerPage, tableBody);
       updateActivePageButton();
+      hideButtons();
     }
   });
 
@@ -145,8 +159,9 @@ export function createTable() {
     if (currentPage < totalPages) {
       currentPage++;
       clearTable();
-      createData(data);
+      createData(data, currentPage, itemsPerPage, tableBody);
       updateActivePageButton();
+      hideButtons();
     }
   });
 
@@ -162,13 +177,7 @@ export function createTable() {
     if (param.length > itemsPerPage) {
       pageButtonsContainer.appendChild(previousBtn);
     }
-
-    //When Load table for the first time, hide previous button
-    if ((currentPage = 1)) {
-      previousBtn.style.display = "none";
-    } else {
-      previousBtn.style.display = "block";
-    }
+    hideButtons();
 
     for (let i = 1; i <= totalPages; i++) {
       const pageBtn = document.createElement("button");
@@ -184,20 +193,7 @@ export function createTable() {
         clearTable();
         createData(param, currentPage, itemsPerPage, tableBody);
         updateActivePageButton();
-
-        //When click on page button, hide previous button if current page is 1
-        if (currentPage == 1) {
-          previousBtn.style.display = "none";
-        } else {
-          previousBtn.style.display = "block";
-        }
-
-        //When click on page button, hide next button if current page is last
-        if (currentPage == totalPages) {
-          nextBtn.style.display = "none";
-        } else {
-          nextBtn.style.display = "block";
-        }
+        hideButtons();
       });
       pageButtonsContainer.appendChild(pageBtn);
     }

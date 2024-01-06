@@ -235,3 +235,18 @@ tr:nth-child(even) {
     margin: 0 3em 0 3em;
     order: 0;
 }
+
+.months-select {
+
+    background: white;
+    /* width: 1.4em; */
+    border-radius: 3em;
+    border: 2px solid black;
+    font-weight: 700;
+    font-size: 1.2em;
+    color:#04AA6D;
+    /* margin-left: 10em; */
+    align-self: flex-start;
+    /* order: 1; */
+    margin-left: 3em;
+}

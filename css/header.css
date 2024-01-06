@@ -5,20 +5,31 @@
     margin: 1em;
 }
 
-.site-header-buttons{
+a {
+    text-decoration: none;
+    color: #04AA6D;
+}
+
+.site-header-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 0.8em;
+    margin: 2em 0;
+    /* flex-wrap: wrap; */
 }
 
 .site-header-button {
     background: #04AA6D;
     color: white;
     border-radius: 0.3em;
-    padding: 10px;
-    margin: 10px;
+    padding: 1em;
+    /* margin: 1em; */
     font-weight: 800;
     text-decoration: none;
-    width: 20em;
+    width: 15em;
     height: 5em;
 }
+
+
+
