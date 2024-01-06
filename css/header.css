@@ -2,7 +2,8 @@
     font-size: 2em;
     font-weight: 800;
     text-align: center;
-    margin: 1em;
+    /* margin: 1em; */
+    margin-top: 1em
 }
 
 a {
@@ -15,7 +16,8 @@ a {
     justify-content: center;
     align-items: center;
     gap: 0.8em;
-    margin: 2em 0;
+    margin-top: 0.5em;
+    margin-bottom: 2em;
     /* flex-wrap: wrap; */
 }
 
@@ -29,6 +31,21 @@ a {
     text-decoration: none;
     width: 15em;
     height: 5em;
+}
+
+.nav {
+    display: flex;
+    justify-content: end;
+}
+
+.nav .logout {
+    margin-left: auto;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    background-color: red;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
 }
 
 

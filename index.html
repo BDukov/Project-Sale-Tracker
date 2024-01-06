@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script src="/src/login/login.js"></script>
 </head>
 <body>
     <div class="container">
@@ -13,7 +14,17 @@
             <div class="site-header">
                 <a href="../../index.html"><h1 class="site-header-title">Sales Tracker</h1></a>
                 <div class="site-header-buttons">
-                    <a href="./src/views/sales.html"  class="site-header-button">All Sales</a>
+                    <div class="form-container">
+
+                        <form action="submit" id="loginForm">
+                            <label for="User">User</label><br>
+                            <input type="text" placeholder="username" name="username" id="username"><br>
+                            <label for="Password">Password</label><br>
+                            <input type="password" placeholder="password" name="password" id="password"><br>
+                            <input class="btn-submit" type="submit" value="Login" onclick="login()">
+                        </form>
+                    </div>
+                    <!-- <a href="./src/views/sales.html"  class="site-header-button">All Sales</a> -->
                 </div>
             </div>
         </div>
