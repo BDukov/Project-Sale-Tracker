@@ -22,22 +22,37 @@ export default function addNewSaleModal(container, clearTable, createData, curre
     label2.textContent = "Price";
     const input2 = document.createElement("input");
     input2.classList.add("modal-input");
+    input2.setAttribute("type", "number");
+    input2.setAttribute("placeholder", "Price");
+    input2.setAttribute("required", "true");
     const label3 = document.createElement("label");
     label3.textContent = "Count";
     const input3 = document.createElement("input");
     input3.classList.add("modal-input");
+    input3.setAttribute("type", "number");
+    input3.setAttribute("placeholder", "Count");
+    input3.setAttribute("required", "true");
     const label4 = document.createElement("label");
     label4.textContent = "Amount";
     const input4 = document.createElement("input");
     input4.classList.add("modal-input");
+    input4.setAttribute("type", "number");
+    input4.setAttribute("placeholder", "Amount");
+    input4.setAttribute("required", "true");
     const label5 = document.createElement("label");
     label5.textContent = "Dealer";
     const input5 = document.createElement("input");
     input5.classList.add("modal-input");
+    input5.setAttribute("type", "text");
+    input5.setAttribute("placeholder", "Dealer");
+    input5.setAttribute("required", "true");
     const label6 = document.createElement("label");
     label6.textContent = "Date";
     const input6 = document.createElement("input");
     input6.classList.add("modal-input");
+    input6.setAttribute("type", "date");
+    input6.setAttribute("placeholder", "Date");
+    input6.setAttribute("required", "true");
     const button = document.createElement("button");
     button.classList.add("modal-btn");
     button.textContent = "Add";
@@ -61,8 +76,13 @@ export default function addNewSaleModal(container, clearTable, createData, curre
       let amount = input4.value;
       let dealer = input5.value;
       let date = input6.value;
+
+      let [year, month, day ] = date.split('-');
+      let newDate = `${day}-${month}-${year}`;
+      date = newDate
       
       data.unshift({ product, price, count, amount, dealer, date });
+
       
       clearTable();
       createData(data, currentPage, itemsPerPage, tableBody);
