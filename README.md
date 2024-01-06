@@ -20,7 +20,7 @@ Sales-Tracker is an application for track yours weekly sales. It allows you to e
     <li>start index.html with liveserver</li>
   </ul>
 <h2> Demo User </h2>
-<p> email: admin </p>
+<p> username: admin </p>
 <p> password: admin</p>
 
 <h1> Screenshots </h1>
