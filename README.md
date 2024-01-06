@@ -6,8 +6,16 @@
 Sales-Tracker is an application for track yours weekly sales. It allows you to easily add new sale, edit old sales, see different statistics about your sales. The project is part of my internship interview assignment and I'am currently still working on it.
 
 <h1>Key Features:</h1>
-<h2> 1. Authentication:   </h2>
-<h2> 2. Sales Management: </h2>
+<h2> 1. Authentication   </h2>
+<h2> 2. Sales Management </h2>
+<h2> 3. Pagination </h2>
+<h2> 4. Filer </h2>
+<h2> 2. Search field </h2>
+
+
+
+
+
 
 <h2> Tech Stack:  </h2>
 <p> JavaScript</p>
