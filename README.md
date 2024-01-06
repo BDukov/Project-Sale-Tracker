@@ -8,10 +8,6 @@ Sales-Tracker is an application for track yours weekly sales. It allows you to e
 <h1>Key Features:</h1>
 <h2> 1. Authentication:   </h2>
 <h2> 2. Sales Management: </h2>
-<h2> 6. CSS </h2>
-<ul>
-  <li> Stylish design with pure CSS for an attractive and responsive UI. </li>
-</ul>
 
 <h2> Tech Stack:  </h2>
 <p> JavaScript</p>
