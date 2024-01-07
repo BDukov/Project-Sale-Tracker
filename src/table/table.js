@@ -114,7 +114,7 @@ export function createTable() {
     paginationButtons(data);
   });
 
-  container.appendChild(resultsPerPageSelect);
+  // container.appendChild(resultsPerPageSelect);
 
   //Създавам редове и популирам данните
   createData(data, currentPage, itemsPerPage, tableBody);

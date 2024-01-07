@@ -250,3 +250,46 @@ tr:nth-child(even) {
     /* order: 1; */
     margin-left: 3em;
 }
+
+.date-from-to {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3em 0 3em;
+    order: 0;
+    gap: 1em;
+}
+
+.date-from-input {
+    border: 2px solid #04AA6D;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    color: black;
+    background: white;
+    max-width: 10em;
+    order: 1;
+    align-self: flex-end;
+}
+
+.date-to-input {
+    border: 2px solid #04AA6D;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    color: black;
+    background: white;
+    max-width: 10em;
+    order: 1;
+    align-self: flex-end;
+}
+
+.date-submit-button {
+    border: 2px solid #04AA6D;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    color: #fff;
+    background: #04AA6D;
+    max-width: 5em;
+    order: 1;
+    align-self: flex-end;
+}
