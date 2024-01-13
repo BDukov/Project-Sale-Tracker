@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let [yearTo, monthTo, dayTo] = dateTo.split("-");
     let reversedDateTo = `${dayTo}-${monthTo}-${yearTo}`;
 
+    console.log(reversedDateFrom, reversedDateTo);
     if (
       reversedDateFrom === "undefined-undefined-" ||
       reversedDateTo === "undefined-undefined-"
@@ -90,7 +91,11 @@ document.addEventListener("DOMContentLoaded", function () {
 function search(from, to) {
   const products = {};
   data.forEach((item) => {
-    const currentDate = new Date(item.date);
+    let currentDate = item.date;
+    let [day, month, year] = currentDate.split("-");
+    let reversedCurrentDate = `${month}-${day}-${year}`;
+    currentDate = new Date(reversedCurrentDate);
+
     const fromDate = new Date(from);
     const toDate = new Date(to);
     if (currentDate >= fromDate && currentDate <= toDate) {

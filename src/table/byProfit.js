@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const headerCell0 = document.createElement("th");
   const headerCell1 = document.createElement("th");
 
-  headerCell0.textContent = "Month";
+  headerCell0.textContent = "Dealer";
   headerCell1.textContent = "Total Profit";
 
   headerRow.appendChild(headerCell0);
