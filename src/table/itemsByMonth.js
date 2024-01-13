@@ -1,6 +1,10 @@
 import { data } from "../data.js";
+import isAuth from "../utils/isAuth.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  isAuth();
+  
   let monthlyCounts = {};
 
   data.forEach((item) => {

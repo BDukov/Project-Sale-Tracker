@@ -1,6 +1,10 @@
 import { data } from "../data.js";
+import isAuth from "../utils/isAuth.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  isAuth();
+
   let container = document.getElementById("table-container");
   let table = document.createElement("table");
   table.classList.add("custom-table");

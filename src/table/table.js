@@ -1,8 +1,12 @@
 import filter from "../table/filter.js";
 import { data } from "../data.js";
 import addNewSaleModal from "../table/addNewSaleModal.js";
+import isAuth from "../utils/isAuth.js";
 
 export function createTable() {
+
+  isAuth();
+
   let container = document.getElementById("table-container");
 
   let addNew = document.createElement("button");

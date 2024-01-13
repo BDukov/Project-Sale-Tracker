@@ -1,6 +1,10 @@
 import { data } from "../data.js";
+import isAuth from "../utils/isAuth.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  isAuth();
+
   let dealers = {};
 
   data.forEach((item) => {
@@ -93,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.onload = function () {
     clearTable();
     createData(dataforTable[0].monthlyData, tableBody);
-  };
+  }; 
 });
 
 
