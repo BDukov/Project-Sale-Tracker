@@ -5,34 +5,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   isAuth();
 
-  let dealers = {};
+  let salesByMonth = {};
 
   data.forEach((item) => {
     const [day, month, year] = item.date.split("-");
     const key = `${month}-${year}`;
-    const dealer = item.dealer;
 
-    if (!dealers[dealer]) {
-      dealers[dealer] = {};
+    if (!salesByMonth[key]) {
+      salesByMonth[key] = {};
     }
 
-    if (!dealers[dealer][key]) {
-      dealers[dealer][key] = {};
+    if (!salesByMonth[key][item.dealer]) {
+      salesByMonth[key][item.dealer] = 0;
     }
 
-    if (!dealers[dealer][key][item.product]) {
-      dealers[dealer][key][item.product] = 0;
-    }
-
-    dealers[dealer][key][item.product] += item.count;
+    salesByMonth[key][item.dealer] += item.count;
   });
 
-  let dataforTable = Object.entries(dealers).map(([dealer, monthlyData]) => ({
-    dealer,
-    monthlyData: Object.entries(monthlyData).map(([date, products]) => ({
-      date,
-      products,
-    })),
+  let dataforTable = Object.entries(salesByMonth).map(([month, dealerData]) => ({
+    month,
+    dealerData: dealerData,
   }));
 
   const container = document.getElementById("table-container");
@@ -62,23 +54,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.createElement("tbody");
   table.appendChild(tableBody);
 
-  const dealersForShow = Object.keys(dealers);
-  const dealerSelect = document.createElement("select");
-  dealerSelect.classList.add("dealer-select");
+  const monthsForShow = Object.keys(salesByMonth);
+  const monthSelect = document.createElement("select");
+  monthSelect.classList.add("months-select");
 
-  dealerSelect.innerHTML = dealersForShow
+  monthSelect.innerHTML = monthsForShow
     .map((option) => `<option value="${option}">${option}</option>`)
     .join("");
 
-  dealerSelect.addEventListener("change", function () {
+  monthSelect.addEventListener("change", function () {
     clearTable();
-    const selectedDealer = dealerSelect.value;
+    const selectedMonth = monthSelect.value;
     const selectedData = dataforTable.find(
-      (entry) => entry.dealer === selectedDealer
+      (entry) => entry.month === selectedMonth
     );
 
     if (selectedData) {
-      createData(selectedData.monthlyData, tableBody);
+      createData(selectedData.dealerData, tableBody);
     }
   });
 
@@ -87,36 +79,31 @@ document.addEventListener("DOMContentLoaded", function () {
       tableBody.removeChild(tableBody.firstChild);
     }
   }
-  const dealerLabel = document.createElement("span");
-  dealerLabel.textContent = "Select Dealer: ";
-  dealerLabel.classList.add("dealer-label");
-  container.appendChild(dealerLabel);
-  container.appendChild(dealerSelect);
   
+  const monthLabel = document.createElement("span");
+  monthLabel.textContent = "Select a month: ";
+  monthLabel.classList.add("months-label");
+  container.appendChild(monthLabel);
+  container.appendChild(monthSelect);
 
   window.onload = function () {
     clearTable();
-    createData(dataforTable[0].monthlyData, tableBody);
+    createData(dataforTable[0].dealerData, tableBody);
   }; 
 });
 
-
-function createData(monthlyData, tableBody) {
-  monthlyData.forEach(({ date, products }) => {
+function createData(dealerData, tableBody) {
+  Object.entries(dealerData).forEach(([dealer, totalSales]) => {
     let row = document.createElement("tr");
     let cell0 = document.createElement("td");
     let cell1 = document.createElement("td");
 
-    cell0.textContent = date;
-    cell1.textContent = calculateTotalSales(products);
+    cell0.textContent = dealer;
+    cell1.textContent = totalSales;
 
     row.appendChild(cell0);
     row.appendChild(cell1);
 
     tableBody.appendChild(row);
   });
-}
-
-function calculateTotalSales(products) {
-  return Object.values(products).reduce((total, count) => total + count, 0);
 }

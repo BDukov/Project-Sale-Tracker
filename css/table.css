@@ -236,26 +236,33 @@ tr:nth-child(even) {
     order: 0;
 }
 
-.months-select, .dealer-select {
+.average-sales-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin: 0 3em 1em 3em;
+    gap: 1em;
+}
+
+
+.months-select, .dealer-select, .weeks-select, .years-select {
 
     background: white;
-    /* width: 1.4em; */
     border-radius: 3em;
     border: 2px solid black;
     font-weight: 700;
     font-size: 1.2em;
     color:#04AA6D;
-    /* margin-left: 10em; */
     align-self: flex-start;
-    /* order: 1; */
-    margin-left: 3em;
+    padding: 0.2em 0.5em;
+    /* margin-left: 3em; */
 }
 
-.dealer-label, .months-label {
+.dealer-label, .months-label, .weeks-label, .years-label {
     font-size: 1.2em;
     font-weight: 700;
-    margin-left: 1em;
-    width: 10em;
+    /* margin-left: 1em; */
 }
 
 .date-from-to {

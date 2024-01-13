@@ -170,4 +170,13 @@ export const data = [
       date: "15-10-2023",
       dealer: "Susan",
     },
+    {
+      orderId: 1001,
+      product: "Air Filter",
+      price: 10,
+      count: 5,
+      profit: 10,
+      date: "15-01-2024",
+      dealer: "Susan",
+    },
   ];
