@@ -82,7 +82,7 @@
           });
 
           column.appendChild(filterSelect);
-        } else if (column.textContent === "Amount") {
+        } else if (column.textContent === "Profit") {
           const filterSelect = document.createElement("select");
           filterSelect.classList.add("filter-select");
           
@@ -103,12 +103,12 @@
             createData(data);
             break;
             case "0-9":
-            sorted = data.sort((a, b) => a.amount - b.amount);
+            sorted = data.sort((a, b) => a.profit - b.profit);
             clearTable();
             createData(sorted, currentPage, itemsPerPage, tableBody);
             break;
             case "9-0":
-              sorted = data.sort((a, b) => b.amount - a.amount);
+              sorted = data.sort((a, b) => b.profit - a.profit);
               clearTable();
               createData(sorted, currentPage, itemsPerPage, tableBody);
               break;

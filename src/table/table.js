@@ -43,7 +43,7 @@ export function createTable() {
   headerCell1.textContent = "Product";
   headerCell2.textContent = "Price";
   headerCell3.textContent = "Count";
-  headerCell4.textContent = "Amount";
+  headerCell4.textContent = "Profit";
   headerCell5.textContent = "Dealer";
   headerCell6.textContent = "Date";
   headerCell7.textContent = "Actions";
@@ -469,7 +469,7 @@ export default function createData(
     cell1.textContent = item.product;
     cell2.textContent = item.price;
     cell3.textContent = item.count;
-    cell4.textContent = item.amount;
+    cell4.textContent = item.profit;
     cell5.textContent = item.dealer;
     cell6.textContent = item.date;
 
