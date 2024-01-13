@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
     products,
   }));
 
-  let container = document.getElementById("table-container");
-  let table = document.createElement("table");
+  const container = document.getElementById("table-container");
+  const table = document.createElement("table");
   table.classList.add("custom-table");
   table.classList.add("sortable");
 
@@ -79,9 +79,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  const monthsLabel = document.createElement("span");
+  monthsLabel.textContent = "Select a month: ";
+  monthsLabel.classList.add("months-label");
+  container.appendChild(monthsLabel);
+
   container.appendChild(monthsSelect);
 
-  // Display data for the last month on page load
   window.onload = function () {
     clearTable();
     const defaultSelectedData = dataforTable.find(
