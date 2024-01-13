@@ -36,3 +36,9 @@ Sales-Tracker is an application for track yours weekly sales. It allows you to e
 <img src="https://github.com/BDukov/Project-Sale-Tracker/assets/107854265/a2c5ba8b-3291-4c3d-ab5f-8e30e1c441b5"> </img>
 <h2> Top Sales Item By Period Page </h2>
 <img src="https://github.com/BDukov/Project-Sale-Tracker/assets/107854265/cecd3158-e536-4361-bdaf-ec5684150075"> </img>
+<h2> Total Sales By Dealer Per Month Page </h2>
+<img src="https://github.com/BDukov/Project-Sale-Tracker/assets/107854265/6e3316c1-0e01-4ed4-a1f1-b2b6e060eb7d"> </img>
+<h2> Total Profit By Dealer Per Month Page </h2>
+<img src="https://github.com/BDukov/Project-Sale-Tracker/assets/107854265/4815b93c-cfde-4fc8-80a3-c782c4b5f02f"></img>
+<h2> Average Sales Per Week </h2>
+<img src="https://github.com/BDukov/Project-Sale-Tracker/assets/107854265/152ad82d-0f74-4fe7-9c5a-9bdc787de0f9"></img>
