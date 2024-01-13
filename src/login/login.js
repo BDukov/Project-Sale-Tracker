@@ -14,7 +14,7 @@ function login() {
     document.cookie = `token=${token} expires=${expirationTime.toUTCString()}; path=/index.html`
     localStorage.setItem('token', token);
     localStorage.setItem('expirationTime', expirationTime.getTime().toString());
-    window.location.href = "https://bdukov.github.io/Project-Sale-Tracker/sales";
+    window.location.href = "./src/views/sales.html";
 
   } else {
     alert("Invalid username or password.");
