@@ -13,10 +13,6 @@ Sales-Tracker is an application for track yours weekly sales. It allows you to e
 <h2> 2. Search field </h2>
 
 
-
-
-
-
 <h2> Tech Stack:  </h2>
 <p> JavaScript</p>
 <p> HTML</p>
@@ -38,3 +34,5 @@ Sales-Tracker is an application for track yours weekly sales. It allows you to e
 <img src="https://github.com/BDukov/Project-Sale-Tracker/assets/107854265/e6b37ab6-db24-433d-b871-a3fb170a7874"> </img>
 <h2> Top Sales By Month Page </h2>
 <img src="https://github.com/BDukov/Project-Sale-Tracker/assets/107854265/a2c5ba8b-3291-4c3d-ab5f-8e30e1c441b5"> </img>
+<h2> Top Sales Item By Period Page </h2>
+<img src="https://github.com/BDukov/Project-Sale-Tracker/assets/107854265/cecd3158-e536-4361-bdaf-ec5684150075"> </img>
